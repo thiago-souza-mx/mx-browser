@@ -1,0 +1,14 @@
+2023/02/28-18:57:36.654 42e4 Reusing MANIFEST C:\Users\tsouza\source\repos\WebAppMX\bin\Debug\net6.0-windows\WebAppMX.exe.WebView2\EBWebView\Default\IndexedDB\http_localhost_8000.indexeddb.leveldb/MANIFEST-000001
+2023/02/28-18:57:36.656 42e4 Recovering log #266
+2023/02/28-18:57:36.656 42e4 Reusing old log C:\Users\tsouza\source\repos\WebAppMX\bin\Debug\net6.0-windows\WebAppMX.exe.WebView2\EBWebView\Default\IndexedDB\http_localhost_8000.indexeddb.leveldb/000266.log 
+2023/02/28-18:57:36.657 42e4 Delete type=2 #264
+2023/02/28-18:57:36.668 57c8 Level-0 table #271: started
+2023/02/28-18:57:36.674 57c8 Level-0 table #271: 1682 bytes OK
+2023/02/28-18:57:36.676 57c8 Delete type=0 #266
+2023/02/28-18:57:36.677 57c8 Manual compaction at level-0 from '\x00O\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00P\x00\x00\x00' @ 0 : 0; will stop at '\x00O\x00\x00\x05' @ 3358 : 1
+2023/02/28-18:57:36.677 57c8 Compacting 1@0 + 1@1 files
+2023/02/28-18:57:36.682 57c8 Generated table #272@0: 42 keys, 1611 bytes
+2023/02/28-18:57:36.682 57c8 Compacted 1@0 + 1@1 files => 1611 bytes
+2023/02/28-18:57:36.683 57c8 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/02/28-18:57:36.683 57c8 Delete type=2 #271
+2023/02/28-18:57:36.684 4a48 Manual compaction at level-0 from '\x00O\x00\x00\x05' @ 3358 : 1 .. '\x00P\x00\x00\x00' @ 0 : 0; will stop at (end)
