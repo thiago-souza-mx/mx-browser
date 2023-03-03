@@ -420,3 +420,194 @@
 [03/02/2023 07:11] Fechando
 [03/02/2023 07:11] Servidor PID 3264 Finalizado
 [03/02/2023 07:11] ----
+[03/02/2023 07:21] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 07:21] PID do servidor php: 33164
+[03/02/2023 07:22] Fechando
+[03/02/2023 07:22] Servidor PID 33164 Finalizado
+[03/02/2023 07:22] ----
+[03/02/2023 19:11] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 19:11] PID do servidor php: 34172
+[03/02/2023 23:06] Fechando
+[03/02/2023 23:06] Servidor PID 34172 Finalizado
+[03/02/2023 23:06] ----
+[03/02/2023 23:06] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 23:06] PID do servidor php: 28760
+[03/02/2023 23:06] Fechando
+[03/02/2023 23:06] Servidor PID 28760 Finalizado
+[03/02/2023 23:06] ----
+[03/02/2023 23:06] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 23:06] PID do servidor php: 13016
+[03/02/2023 23:08] Fechando
+[03/02/2023 23:08] Servidor PID 13016 Finalizado
+[03/02/2023 23:08] ----
+[03/02/2023 23:08] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 23:08] PID do servidor php: 7188
+[03/02/2023 23:08] Fechando
+[03/02/2023 23:08] Servidor PID 7188 Finalizado
+[03/02/2023 23:08] ----
+[03/02/2023 23:10] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 23:10] PID do servidor php: 20140
+[03/02/2023 23:10] Fechando
+[03/02/2023 23:10] Servidor PID 20140 Finalizado
+[03/02/2023 23:10] ----
+[03/02/2023 23:17] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 23:17] PID do servidor php: 24120
+[03/02/2023 23:18] Fechando
+[03/02/2023 23:18] Servidor PID 24120 Finalizado
+[03/02/2023 23:18] ----
+[03/02/2023 23:19] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 23:19] PID do servidor php: 33796
+[03/02/2023 23:20] Fechando
+[03/02/2023 23:20] Servidor PID 33796 Finalizado
+[03/02/2023 23:20] ----
+[03/02/2023 23:20] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 23:20] PID do servidor php: 33424
+[03/02/2023 23:20] Fechando
+[03/02/2023 23:20] Servidor PID 33424 Finalizado
+[03/02/2023 23:20] ----
+[03/02/2023 23:21] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 23:21] PID do servidor php: 7276
+[03/02/2023 23:21] Fechando
+[03/02/2023 23:21] Servidor PID 7276 Finalizado
+[03/02/2023 23:21] ----
+[03/02/2023 23:22] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 23:22] PID do servidor php: 26440
+[03/02/2023 23:23] Fechando
+[03/02/2023 23:23] Servidor PID 26440 Finalizado
+[03/02/2023 23:23] ----
+[03/02/2023 23:23] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 23:23] PID do servidor php: 32376
+[03/02/2023 23:25] Fechando
+[03/02/2023 23:25] Servidor PID 32376 Finalizado
+[03/02/2023 23:25] ----
+[03/02/2023 23:25] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/02/2023 23:25] PID do servidor php: 26836
+[03/02/2023 23:26] Fechando
+[03/02/2023 23:26] Servidor PID 26836 Finalizado
+[03/02/2023 23:26] ----
+[03/03/2023 00:00] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:00] PID do servidor php: 23180
+[03/03/2023 00:02] Fechando
+[03/03/2023 00:02] Servidor PID 23180 Finalizado
+[03/03/2023 00:02] ----
+[03/03/2023 00:02] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:02] PID do servidor php: 18216
+[03/03/2023 00:02] Fechando
+[03/03/2023 00:02] Servidor PID 18216 Finalizado
+[03/03/2023 00:02] ----
+[03/03/2023 00:12] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:12] PID do servidor php: 27512
+[03/03/2023 00:14] Fechando
+[03/03/2023 00:14] Servidor PID 27512 Finalizado
+[03/03/2023 00:14] ----
+[03/03/2023 00:19] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:19] PID do servidor php: 27456
+[03/03/2023 00:19] Fechando
+[03/03/2023 00:19] Servidor PID 27456 Finalizado
+[03/03/2023 00:19] ----
+[03/03/2023 00:19] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:19] PID do servidor php: 9688
+[03/03/2023 00:19] Fechando
+[03/03/2023 00:19] Servidor PID 9688 Finalizado
+[03/03/2023 00:19] ----
+[03/03/2023 00:21] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:21] PID do servidor php: 7180
+[03/03/2023 00:21] Fechando
+[03/03/2023 00:21] Servidor PID 7180 Finalizado
+[03/03/2023 00:21] ----
+[03/03/2023 00:21] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:21] PID do servidor php: 34440
+[03/03/2023 00:22] Fechando
+[03/03/2023 00:22] Servidor PID 34440 Finalizado
+[03/03/2023 00:22] ----
+[03/03/2023 00:39] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:39] PID do servidor php: 30616
+[03/03/2023 00:39] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:39] PID do servidor php: 25032
+[03/03/2023 00:40] Fechando
+[03/03/2023 00:40] Servidor PID 30616 Finalizado
+[03/03/2023 00:40] ----
+[03/03/2023 00:40] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:40] PID do servidor php: 24144
+[03/03/2023 00:40] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:40] PID do servidor php: 34488
+[03/03/2023 00:43] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:43] PID do servidor php: 19476
+[03/03/2023 00:43] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:43] PID do servidor php: 14840
+[03/03/2023 00:43] Fechando
+[03/03/2023 00:43] Servidor PID 19476 Finalizado
+[03/03/2023 00:43] ----
+[03/03/2023 00:46] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:46] PID do servidor php: 18756
+[03/03/2023 00:46] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:46] PID do servidor php: 1544
+[03/03/2023 00:47] Fechando
+[03/03/2023 00:47] Servidor PID 18756 Finalizado
+[03/03/2023 00:47] ----
+[03/03/2023 00:50] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:50] PID do servidor php: 34828
+[03/03/2023 00:50] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:50] PID do servidor php: 12412
+[03/03/2023 00:51] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:51] PID do servidor php: 21488
+[03/03/2023 00:51] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 00:51] PID do servidor php: 28776
+[03/03/2023 00:51] Fechando
+[03/03/2023 00:51] Servidor PID 21488 Finalizado
+[03/03/2023 00:51] ----
+[03/03/2023 05:33] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 05:33] PID do servidor php: 6196
+[03/03/2023 05:37] Fechando
+[03/03/2023 05:37] Servidor PID 6196 Finalizado
+[03/03/2023 05:37] ----
+[03/03/2023 05:49] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 05:49] PID do servidor php: 31220
+[03/03/2023 05:49] Fechando
+[03/03/2023 05:49] Servidor PID 31220 Finalizado
+[03/03/2023 05:49] ----
+[03/03/2023 05:50] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 05:50] PID do servidor php: 35820
+[03/03/2023 05:50] Fechando
+[03/03/2023 05:50] Servidor PID 35820 Finalizado
+[03/03/2023 05:50] ----
+[03/03/2023 05:52] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 05:52] PID do servidor php: 19096
+[03/03/2023 05:53] Fechando
+[03/03/2023 05:53] Servidor PID 19096 Finalizado
+[03/03/2023 05:53] ----
+[03/03/2023 06:01] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 06:01] PID do servidor php: 14832
+[03/03/2023 06:02] Fechando
+[03/03/2023 06:02] Servidor PID 14832 Finalizado
+[03/03/2023 06:02] ----
+[03/03/2023 06:03] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 06:03] PID do servidor php: 34564
+[03/03/2023 06:03] Fechando
+[03/03/2023 06:03] Servidor PID 34564 Finalizado
+[03/03/2023 06:03] ----
+[03/03/2023 06:04] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 06:04] PID do servidor php: 1244
+[03/03/2023 06:05] Fechando
+[03/03/2023 06:05] Servidor PID 1244 Finalizado
+[03/03/2023 06:05] ----
+[03/03/2023 06:07] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 06:07] PID do servidor php: 32040
+[03/03/2023 06:08] Fechando
+[03/03/2023 06:08] Servidor PID 32040 Finalizado
+[03/03/2023 06:08] ----
+[03/03/2023 06:11] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 06:11] PID do servidor php: 8468
+[03/03/2023 06:12] Fechando
+[03/03/2023 06:12] Servidor PID 8468 Finalizado
+[03/03/2023 06:12] ----
+[03/03/2023 06:18] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 06:18] PID do servidor php: 18096
+[03/03/2023 06:19] Fechando
+[03/03/2023 06:19] Servidor PID 18096 Finalizado
+[03/03/2023 06:19] ----
+[03/03/2023 06:21] Servidor php Startado em : cd C:\www ; php -S localhost:50099
+[03/03/2023 06:21] PID do servidor php: 32448
+[03/03/2023 06:21] Fechando
+[03/03/2023 06:21] Servidor PID 32448 Finalizado
+[03/03/2023 06:21] ----

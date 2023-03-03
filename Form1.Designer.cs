@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             this.CloseButton = new WebAppMX.Custom.ButtonPro();
             this.MinusButton = new WebAppMX.Custom.ButtonPro();
@@ -41,21 +40,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Wrapper = new System.Windows.Forms.Panel();
             this.Browser = new WebAppMX.Custom.Browser();
-            this.CenterLogo = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.SplahText = new System.Windows.Forms.Label();
-            this.LoadBar = new System.Windows.Forms.Panel();
-            this.LoadColor = new System.Windows.Forms.Panel();
-            this.TimerLoad = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ToolBarLogo)).BeginInit();
             this.ToolBar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.ContainerTitle.SuspendLayout();
             this.Wrapper.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Browser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CenterLogo)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.LoadBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -223,9 +213,6 @@
             this.Wrapper.BackColor = System.Drawing.Color.Transparent;
             this.Wrapper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Wrapper.Controls.Add(this.Browser);
-            this.Wrapper.Controls.Add(this.CenterLogo);
-            this.Wrapper.Controls.Add(this.panel3);
-            this.Wrapper.Controls.Add(this.LoadBar);
             this.Wrapper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Wrapper.Location = new System.Drawing.Point(0, 44);
             this.Wrapper.Name = "Wrapper";
@@ -243,67 +230,7 @@
             this.Browser.Size = new System.Drawing.Size(1349, 681);
             this.Browser.Source = new System.Uri("http://localhost:8000", System.UriKind.Absolute);
             this.Browser.TabIndex = 0;
-            this.Browser.Visible = false;
             this.Browser.ZoomFactor = 1D;
-            // 
-            // CenterLogo
-            // 
-            this.CenterLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CenterLogo.Image = ((System.Drawing.Image)(resources.GetObject("CenterLogo.Image")));
-            this.CenterLogo.Location = new System.Drawing.Point(510, 160);
-            this.CenterLogo.MaximumSize = new System.Drawing.Size(320, 300);
-            this.CenterLogo.Name = "CenterLogo";
-            this.CenterLogo.Size = new System.Drawing.Size(320, 300);
-            this.CenterLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.CenterLogo.TabIndex = 1;
-            this.CenterLogo.TabStop = false;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.SplahText);
-            this.panel3.Location = new System.Drawing.Point(345, 480);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(650, 45);
-            this.panel3.TabIndex = 6;
-            // 
-            // SplahText
-            // 
-            this.SplahText.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SplahText.AutoSize = true;
-            this.SplahText.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SplahText.ForeColor = System.Drawing.Color.White;
-            this.SplahText.Location = new System.Drawing.Point(236, 4);
-            this.SplahText.Name = "SplahText";
-            this.SplahText.Size = new System.Drawing.Size(184, 37);
-            this.SplahText.TabIndex = 6;
-            this.SplahText.Text = "MX Corporate";
-            this.SplahText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // LoadBar
-            // 
-            this.LoadBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoadBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.LoadBar.Controls.Add(this.LoadColor);
-            this.LoadBar.Location = new System.Drawing.Point(345, 541);
-            this.LoadBar.Name = "LoadBar";
-            this.LoadBar.Size = new System.Drawing.Size(650, 5);
-            this.LoadBar.TabIndex = 0;
-            // 
-            // LoadColor
-            // 
-            this.LoadColor.BackColor = System.Drawing.Color.White;
-            this.LoadColor.Dock = System.Windows.Forms.DockStyle.Left;
-            this.LoadColor.Location = new System.Drawing.Point(0, 0);
-            this.LoadColor.Name = "LoadColor";
-            this.LoadColor.Size = new System.Drawing.Size(85, 5);
-            this.LoadColor.TabIndex = 0;
-            // 
-            // TimerLoad
-            // 
-            this.TimerLoad.Enabled = true;
-            this.TimerLoad.Interval = 30;
-            this.TimerLoad.Tick += new System.EventHandler(this.App_Loaded);
             // 
             // App
             // 
@@ -336,10 +263,6 @@
             this.ContainerTitle.PerformLayout();
             this.Wrapper.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Browser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CenterLogo)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.LoadBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -348,7 +271,6 @@
 
         private Custom.ButtonPro CloseButton;
         private Custom.ButtonPro MinusButton;
-        private PictureBox ToolBarLogo;
         private Panel ToolBar;
         private Panel Wrapper;
         private Custom.Browser Browser;
@@ -357,11 +279,6 @@
         private Panel panel1;
         private Label AppTitle;
         private Panel ContainerTitle;
-        private PictureBox CenterLogo;
-        private System.Windows.Forms.Timer TimerLoad;
-        private Panel LoadBar;
-        private Panel LoadColor;
-        private Panel panel3;
-        private Label SplahText;
+        public PictureBox ToolBarLogo;
     }
 }

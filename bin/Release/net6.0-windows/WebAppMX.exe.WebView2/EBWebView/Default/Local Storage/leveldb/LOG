@@ -1,3 +1,3 @@
-2023/03/02-07:10:26.930 26d8 Reusing MANIFEST C:\Users\tsouza\source\repos\WebAppMX\bin\Release\net6.0-windows\WebAppMX.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
-2023/03/02-07:10:26.931 26d8 Recovering log #3
-2023/03/02-07:10:26.932 26d8 Reusing old log C:\Users\tsouza\source\repos\WebAppMX\bin\Release\net6.0-windows\WebAppMX.exe.WebView2\EBWebView\Default\Local Storage\leveldb/000003.log 
+2023/03/03-06:21:40.874 581c Reusing MANIFEST D:\www\repos\WebAppMX\bin\Release\net6.0-windows\WebAppMX.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
+2023/03/03-06:21:40.875 581c Recovering log #3
+2023/03/03-06:21:40.876 581c Reusing old log D:\www\repos\WebAppMX\bin\Release\net6.0-windows\WebAppMX.exe.WebView2\EBWebView\Default\Local Storage\leveldb/000003.log 

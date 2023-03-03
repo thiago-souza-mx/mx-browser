@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5Mn/6joKikBzb3WuHYAt4vHyViqoMkGSAitl7OoGXBm60Yx41RlyGUynJS5WgE47B03lFS6xDMAVE8T790atuA==",
+  "dgSpecHash": "wMdCM/5gvY7fI2yfSAiT/Q4muTkFGMKSi/tLE0GwyY6KD3zmw2f1z37RkiHd0OOGXizU1IMlstwMSCEJx3G6qA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tsouza\\source\\repos\\WebAppMX\\WebAppMX.csproj",
+  "projectFilePath": "D:\\www\\repos\\WebAppMX\\WebAppMX.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tsouza\\.nuget\\packages\\fontawesome.sharp\\6.2.1\\fontawesome.sharp.6.2.1.nupkg.sha512",
     "C:\\Users\\tsouza\\.nuget\\packages\\ini-parser\\2.5.2\\ini-parser.2.5.2.nupkg.sha512",

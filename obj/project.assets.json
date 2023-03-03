@@ -250,11 +250,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tsouza\\source\\repos\\WebAppMX\\WebAppMX.csproj",
+      "projectUniqueName": "D:\\www\\repos\\WebAppMX\\WebAppMX.csproj",
       "projectName": "WebAppMX",
-      "projectPath": "C:\\Users\\tsouza\\source\\repos\\WebAppMX\\WebAppMX.csproj",
+      "projectPath": "D:\\www\\repos\\WebAppMX\\WebAppMX.csproj",
       "packagesPath": "C:\\Users\\tsouza\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tsouza\\source\\repos\\WebAppMX\\obj\\",
+      "outputPath": "D:\\www\\repos\\WebAppMX\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

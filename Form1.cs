@@ -9,90 +9,67 @@ using WebAppMX.Properties;
 using System.Resources;
 using System.Drawing;
 using Newtonsoft.Json;
+using System.Runtime.InteropServices;
 
 namespace WebAppMX
 {
     public partial class App : Form
     {
+        SplashForm splashForm;
+        public bool mouseClicked;
+        public Point clickedAt;
+        public bool fullActive = false;
+        public IniData app;
+        public KeyDataCollection WINDOW;
+        public KeyDataCollection SERVER;
+        public KeyDataCollection SPLASH;
+        public CGI cgi;
+        public int _timerLoad = 0;
+        public int _splashTime = 0;
+        public string _splashText;
 
-        private bool mouseClicked;
-        private Point clickedAt;
-        private bool fullActive = false;
-        private IniData app;
-        private KeyDataCollection WINDOW;
-        private KeyDataCollection SERVER;
-        private KeyDataCollection SPLASH;
-        private CGI cgi;
-        private int _timerLoad = 0;
-        private int _splashTime = 0;
-        private string _splashText;
-
-        private bool _loadBar = false;
-        private Color _toolBarColor;
-        private Color _toolBarFontColor;
-        private int _height;
-        private int _width;
-        private int _fullSceen = 1;
-        private Uri _source;
-        private Image _windowIcon;
-        private Image _splashIcon;
-        private Icon _taskbarIcon;
-        private string _appTitle;
-        private int pid_server ;
+        public bool _loadBar = false;
+        public Color _toolBarColor;
+        public Color _toolBarFontColor;
+        public int _height;
+        public int _width;
+        public int _fullSceen = 1;
+        public Uri _source;
+        public Image _windowIcon;
+        public Image _splashIcon;
+        public Icon _taskbarIcon;
+        public string _appTitle;
+        public int _radius = 0;
+        private bool Exiting = false;
+        public int pid_server { get; set; }
 
 
-        public App(IniData ini)
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+       (
+           int nLeftRect,     // x-coordinate of upper-left corner
+           int nTopRect,      // y-coordinate of upper-left corner
+           int nRightRect,    // x-coordinate of lower-right corner
+           int nBottomRect,   // y-coordinate of lower-right corner
+           int nWidthEllipse, // width of ellipse
+           int nHeightEllipse // height of ellipse
+       );
+        public App(IniData ini, SplashForm Main)
         {
-            InitializeComponent();            
+            splashForm = Main;
+            InitializeComponent();
+
+    
             cgi = new CGI(this);
             this.TopMost = false;
 
             // Initial definitions
-
             app = ini;
             WINDOW = app["WINDOW"];
             SERVER = app["SERVER"];
             SPLASH = app["SPLASH"];
-            //TASKBAR = app["TASKBAR"];
 
-            TimerLoad.Start();
-
-            // Exceptions
-
-            try 
-            {
-                if (SERVER["Start"] != null && SERVER["Name"] != null)
-                {
-                    CGI.Shell(SERVER["Start"]);
-                    Process p = CGI.Shell($"Get-Process {SERVER["Name"]} | Select-Object -Property  Id, StartTime | ConvertTo-Json");
-
-                    DateTime startTime = p.StartTime;
-                    DateTime jstartTime ;
-
-                    string output = p.StandardOutput.ReadToEnd();
-                    dynamic json = JsonConvert.DeserializeObject(output);
-                    CGI.LogInfo($"Servidor {SERVER["Name"]} Startado em : { SERVER["Start"]}");
-
-                    try
-                    {
-                        foreach (var item in json)
-                        {
-                            jstartTime = item.StartTime;    
-                            if(startTime.ToUniversalTime() <= jstartTime.ToUniversalTime() && startTime.ToUniversalTime().AddMinutes(2) >= jstartTime.ToUniversalTime())
-                                pid_server = item.Id;
-                        }
-                    }
-                    catch
-                    {
-                        pid_server = json.Id;
-                    }
-
-                    CGI.LogInfo($"PID do servidor {SERVER["Name"]}: {pid_server}");
-                }
-            } 
-            catch(Exception e) {
-                CGI.LogInfo("Servidor não inicado:" + e.Message);
-            }
+            // Exceptions         
 
             try { _height           = int.Parse(WINDOW["Height"]);      } catch { _height = this.Height; }
             try { _width            = int.Parse(WINDOW["Width"]);       } catch { _width = this.Width; }
@@ -101,11 +78,7 @@ namespace WebAppMX
             try { _fullSceen        = int.Parse(WINDOW["FullScreen"]);  } catch { }
             try { _source           = new Uri(WINDOW["Source"]);        } catch { _source = Browser.Source; }
             try { _windowIcon       = Image.FromFile(WINDOW["Icon"]);   } catch { _windowIcon = ToolBarLogo.Image; }
-            try { _splashIcon       = Image.FromFile(SPLASH["Icon"]);   } catch { _splashIcon = _windowIcon; }
-            try { _splashTime       = int.Parse(SPLASH["Timer"]) 
-                                       * TimerLoad.Interval;            } catch { _splashTime = 5; }
-            try { _loadBar          = bool.Parse(SPLASH["LoadBar"]);    } catch { }
-            try { _splashText       = SPLASH["Text"];                   } catch { }
+            try { _radius           = int.Parse(WINDOW["Radius"]);      } catch { }
 
 
             // Variables declare
@@ -136,11 +109,6 @@ namespace WebAppMX
             ToolBarLogo.Image = _windowIcon;
             ToolBarLogo.Size = new Size(_windowIcon.Width * ToolBarLogo.MaximumSize.Height / _windowIcon.Height, ToolBarLogo.MaximumSize.Height);
 
-            CenterLogo.BackColor = _toolBarColor;
-            CenterLogo.Image = _splashIcon;
-
-            LoadBar.Visible = _loadBar;
-            SplahText.Text = _splashText;
 
             // Atribuitions App
 
@@ -149,6 +117,8 @@ namespace WebAppMX
             this.Width = _width;
             this.Icon = _taskbarIcon;
             this.BackColor = _toolBarColor;
+            if (_radius > 0)
+                this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, _radius, _radius));
 
             ChangeStyleComponent();
             Browser.InitializeAsync();
@@ -174,33 +144,43 @@ namespace WebAppMX
         {
         }
 
-        private void App_Loaded(object sender, EventArgs e)
+        private const int CS_DROPSHADOW = 0x00020000;
+        protected override CreateParams CreateParams
         {
-            _timerLoad+=1;
-            if(_loadBar)
-                LoadColor.Width = (LoadBar.Width / _splashTime) * _timerLoad;
-
-            if ( _timerLoad == _splashTime ) { 
-                Browser.Visible = true;
-                LoadBar.Visible = false;
-                SplahText.Visible = false;
-                TimerLoad.Stop();
-                TimerLoad.Enabled = false;
+            get
+            {
+                // add the drop shadow flag for automatically drawing
+                // a drop shadow around the form
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
             }
         }
 
-        private void CloseButton_Click(object sender, EventArgs e)
+        private async void CloseButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            try
+            {
+                String result = await Browser.CoreWebView2.ExecuteScriptAsync("Window.onClose();");
+                if (bool.Parse(result))
+                    Application.Exit();
+            }
+            catch
+            {
+                Application.Exit();
+            }
+            AppTitle.Focus();
         }
 
         private async void MinusButton_Click(object sender, EventArgs e)
         {
+            await Browser.CoreWebView2.ExecuteScriptAsync("Window.onMinimize();");
             await cgi.Minimize(!fullActive);
             this.WindowState = FormWindowState.Minimized;
+            AppTitle.Focus();
         }
 
-        private void MaxiButton_Click(object sender, EventArgs e)
+        private async void MaxiButton_Click(object sender, EventArgs e)
         {
             ChangeStyleComponent();
 
@@ -208,49 +188,72 @@ namespace WebAppMX
             {
                 this.WindowState = FormWindowState.Normal;
                 fullActive = false;
+                await Browser.CoreWebView2.ExecuteScriptAsync("Window.onNormalize();");
                 MaxiButton.IconChar = FontAwesome.Sharp.IconChar.Square;
+                this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, _radius, _radius));
             }
             else
             {
                 this.WindowState = FormWindowState.Maximized;
                 fullActive = true;
+                await Browser.CoreWebView2.ExecuteScriptAsync("Window.onMaximize();");
                 MaxiButton.IconChar = FontAwesome.Sharp.IconChar.Minimize;
+                this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 0, 0));
             }
+            AppTitle.Focus();
         }
 
         private async void App_Minimize(object sender, EventArgs e)
         {
             if(this.WindowState == FormWindowState.Minimized) { 
-                 await cgi.Minimize(!fullActive);
+                await cgi.Minimize(!fullActive);
+                await Browser.CoreWebView2.ExecuteScriptAsync("Window.onMinimize();");
                 this.WindowState = FormWindowState.Minimized;
+                AppTitle.Focus();
             }
         }
 
         private async void App_Restore(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)            
-                await cgi.Maximize(!fullActive);
-            else if(this.WindowState == FormWindowState.Normal)
-                await cgi.Maximize(!fullActive);
-        }
-        
-        private async void App_Closing(object sender, EventArgs e)
-        {
-            CGI.LogInfo("Fechando");
-            if(pid_server > 0)
+            if (this.WindowState == FormWindowState.Minimized)
             {
-                Process process= Process.GetProcessById(pid_server);
-                try
-                {
-                    process.Kill();
-                    CGI.LogInfo($"Servidor PID {pid_server} Finalizado");
-                }
-                catch (Exception ex) { 
-                    CGI.LogInfo(ex.Message);
-                }
+                await cgi.Maximize(!fullActive);
+                await Browser.CoreWebView2.ExecuteScriptAsync("Window.onNormalize();");
+                this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, _radius, _radius));
             }
-            CGI.LogInfo("----");
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                await cgi.Maximize(!fullActive);
+                await Browser.CoreWebView2.ExecuteScriptAsync("Window.onNormalize();");
+                this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, _radius, _radius));
+            }
+            AppTitle.Focus();
+        }
 
+        public void App_Closing(object sender, EventArgs e)
+        {
+            if (!Exiting)
+            {
+                CGI.LogInfo("Fechando");
+                if (pid_server > 0)
+                {
+                    Process process = Process.GetProcessById(pid_server);
+                    try
+                    {
+                        process.Kill();
+                        CGI.LogInfo($"Servidor PID {pid_server} Finalizado");
+                        pid_server = 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        CGI.LogInfo(ex.Message);
+                    }
+                }
+                CGI.LogInfo("----");
+                Exiting = true;
+
+                splashForm.Close();
+            }
         }
 
         private void ToolBar_MouseMove(object sender, EventArgs e)
@@ -261,6 +264,7 @@ namespace WebAppMX
             {
                 this.Location = new Point(Left, Top);
             }
+            Browser.CoreWebView2.ExecuteScriptAsync("Window.onMouseMove();");
         }
 
         private void ToolBar_MouseDown(object sender, MouseEventArgs e)
@@ -270,6 +274,7 @@ namespace WebAppMX
 
             mouseClicked = true;
             clickedAt = e.Location;
+            Browser.CoreWebView2.ExecuteScriptAsync("Window.onMouseDown();");
         }
 
         private void ToolBar_MouseUp(object sender, MouseEventArgs e)
@@ -294,15 +299,18 @@ namespace WebAppMX
                 {
                     Top = 0;
                     this.Height = Screen.FromControl(this).WorkingArea.Height;
+                    this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 0, 0));
                 }
                 else
                 {
                     this.Height = _height;
+                    this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, _radius, _radius));
                 }
 
                 if (Right > WorkingWidth)
                 {
                     Left = negative ? this.Width * -1 : WorkingWidth - this.Width;
+                    this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, _radius, _radius));
                 }
 
                 if (Left < WorkingLeft)
@@ -312,9 +320,10 @@ namespace WebAppMX
 
             }
             mouseClicked = false;
+            Browser.CoreWebView2.ExecuteScriptAsync("Window.onMouseUp();");
         }
 
-        private Color Theme(Color color, float perc, float param = 0.2f )
+        public Color Theme(Color color, float perc, float param = 0.2f )
         {
             Color theme;            
 

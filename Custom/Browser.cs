@@ -19,12 +19,7 @@ namespace WebAppMX.Custom
             await this.EnsureCoreWebView2Async(null);            
             this.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
             this.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
-            this.CoreWebView2.DOMContentLoaded += CoreWebView2_DOMContentLoaded;
         }
 
-        public void CoreWebView2_DOMContentLoaded(object? sender, CoreWebView2DOMContentLoadedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
