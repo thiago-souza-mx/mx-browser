@@ -1,20 +1,30 @@
 # Api de Eventos
 
-Para interceptar eventos é preciso iniciar um objeto {**Window**} e declarar os métodos que deseja usar.
+Para interceptar eventos é preciso iniciar um objeto {**MX_BROWSER**} e declarar os métodos que deseja usar.
 
 ### Eventos
 
 |  Name | Type  | Decription   |
 | :------------ | :------------ | :------------ |
 | **onClose()** | *function, bool, async* |  Ao fechar aplicação, espera um **true**  |
+| **onReload()** | *function, bool, async* |  Ao fechar aplicação, espera um **true**  |
 | **onMinimize()** | *function, void* |  Ao minimizar  |
 |**onMaximize()** | *function, void* |  Ao maximizar (**full Screen**)  |
 |**onNormalize()** | *function, void* |  Ao Restaurar de minimizado ou maximizado  |
 |**onMouseMove()** | *function, void* |  Ao Mover o mouse sobre a ToolBar |
 |**onMouseDown()** | *function, void* |  Ao Clicar Sobre a ToolBar |
 |**onMouseUp()**  | *function, void* |  Ao finalizar o click sobre a ToolBar |
-|**getTheme(theme)**  | *function, void* |  Ao Carregar a página, envia o objeto |
+|**onTheme(theme)**  | *function, void* |  Ao Carregar a página, envia o objeto |
+|**onStatus(theme)**  | *function, void* |  Devolve o status da janela Minimized/Normal/Maximized |
 
+
+### Métodos
+|  Name | Type  | Decription   |
+| :------------ | :------------ | :------------ |
+| **close()** | *function* |  Solicita o fechamento da aplicação |
+| **reload()** | *function* |  Solicita o releoad da aplicação. Esse evento retorna a aplicação para a pagina inicial |
+| **minimize()** | *function* | minimiza a janela do app  |
+| **maximize()** | *function, toggle* |  Se o estado é normal, maximiza, do contrario, restaura ao normal  |
 
 ### TEMA
 Um objeto recebido contendo os seguintes parametros:
