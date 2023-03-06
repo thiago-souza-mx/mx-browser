@@ -1,6 +1,6 @@
 # Api de Eventos
 
-Para interceptar eventos é preciso iniciar um objeto {**MX_BROWSER**} e declarar os métodos que deseja usar.
+Para interceptar eventos é preciso invocar o objeto {**MX_BROWSER**} e declarar os métodos que deseja usar.
 
 ### Eventos
 
