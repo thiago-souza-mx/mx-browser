@@ -42,30 +42,29 @@ Neste exemplo de código declaramos os métodos e escrevemos na `<div id="messag
     <div id="message"></div>
     <script>
         const drawText = text => document.getElementById("message").innerText = text;
-        const Window = {
-            onClose() {
-                let text = "Press a button!\nEither OK or Cancel.";
-                return confirm(text)
-            },
-            onMinimize() {
-                drawText('onMinimize')
-            },
-            onMaximize() {
-                drawText('onMaximize')
-            },
-            onNormalize() {
-                drawText('onNormalize')
-            },
-            onMouseMove() {
-                drawText('onMouseMove')
-            },
-            onMouseDown() {
-                drawText('onMouseDown')
-            },
-            onMouseUp() {
-                drawText('onMouseUp')
-            }
+        MX_BROWSER.onClose = ()=> {
+            let text = "Press a button!\nEither OK or Cancel.";
+            return confirm(text)
         }
+        MX_BROWSER.onMinimize = ()=> {
+            drawText('onMinimize')
+        }
+        MX_BROWSER.onMaximize = ()=> {
+            drawText('onMaximize')
+        }
+        MX_BROWSER.onNormalize = ()=> {
+            drawText('onNormalize')
+        }
+        MX_BROWSER.onMouseMove = ()=> {
+            drawText('onMouseMove')
+        }
+        MX_BROWSER.onMouseDown = ()=> {
+            drawText('onMouseDown')
+        }
+        MX_BROWSER.onMouseUp = ()=>  {
+            drawText('onMouseUp')
+        }
+
     </script>
 </body>
 </html>
