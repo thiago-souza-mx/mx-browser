@@ -299,15 +299,11 @@ namespace WebAppMX
             }
             else if (this.WindowState == FormWindowState.Normal)
             {
-                if (_loadApp)
+                if (!_loadApp)
                 {
-                    await cgi.Minimize(!fullActive);
-                    this.WindowState = FormWindowState.Minimized;
-                    await Api("MX_BROWSER.onMinimize();");
+                    await cgi.Maximize(!fullActive);
                     this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, _radius, _radius));
-                }
-                else
-                {
+       
                     _loadApp = true;
                 }
             }
@@ -431,7 +427,13 @@ namespace WebAppMX
                    splashForm.AppOpen();
                 _startApi = true;
             }
-            Api("MX_BROWSER.getTheme({primary:'" + CGI.ToHexString(_appColor) + "', secondary:'" + CGI.ToHexString(_toolBarFontColor) + "'})");
+            Api("MX_BROWSER.getApplication({" +
+                "theme:{" +
+                    "primary:'" + CGI.ToHexString(_appColor) + "', " +
+                    "secondary:'" + CGI.ToHexString(_toolBarFontColor) + "'" +
+                "}," +
+                "staus:'" + this.WindowState.ToString() + "'" +
+            "})");
         }
 
         private Task<string> Api(string method)

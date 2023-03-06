@@ -55,3 +55,8 @@ D:\www\repos\WebAppMX\obj\Release\net6.0-windows\WebAppMX.pdb
 D:\www\repos\WebAppMX\obj\Release\net6.0-windows\WebAppMX.genruntimeconfig.cache
 D:\www\repos\WebAppMX\obj\Release\net6.0-windows\ref\WebAppMX.dll
 D:\www\repos\WebAppMX\obj\Release\net6.0-windows\WebAppMX.SplashForm.resources
+D:\www\repos\WebAppMX\bin\Release\net6.0-windows\public\assets\icon.ico
+D:\www\repos\WebAppMX\bin\Release\net6.0-windows\app.ini
+D:\www\repos\WebAppMX\bin\Release\net6.0-windows\DOM\LoadDomScript.js
+D:\www\repos\WebAppMX\bin\Release\net6.0-windows\public\assets\icon.png
+D:\www\repos\WebAppMX\bin\Release\net6.0-windows\public\error.html

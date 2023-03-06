@@ -267,7 +267,7 @@
     <style id="custom"></style>
     <script>
 
-        MX_BROWSER.getTheme = theme => {
+        MX_BROWSER.onTheme = (theme) => {
             document.getElementById('custom').innerHTML = `
                 :root{
                     --primary-color: ${theme.primary};
@@ -279,6 +279,8 @@
                 }
             `;
         }
+
+        MX_BROWSER.onStatus = status => console.log(status)
 
         window.addEventListener('onMaximize', ()=>{
             document.getElementById('max').innerText = "Restaurar";
