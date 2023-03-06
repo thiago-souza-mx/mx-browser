@@ -230,6 +230,12 @@ namespace WebAppMX
             Dispatch(action, false);
         }
 
+        private async void Window_Reload()
+        {
+            String result = await Api("MX_BROWSER.onReload();");
+            if (bool.Parse(result))
+                Browser.CoreWebView2.Navigate(_source.ToString());
+        }      
         private async void Window_Minimize()
         {
             await Api("MX_BROWSER.onMinimize();");
@@ -336,7 +342,7 @@ namespace WebAppMX
             }
         }
 
-        private void ToolBar_MouseMove(object sender, EventArgs e)
+        private void ToolBar_MouseMove(object sender, MouseEventArgs e)
         {
             int Top = Cursor.Position.Y - clickedAt.Y;
             int Left = Cursor.Position.X - clickedAt.X;
@@ -432,7 +438,8 @@ namespace WebAppMX
                     "primary:'" + CGI.ToHexString(_appColor) + "', " +
                     "secondary:'" + CGI.ToHexString(_toolBarFontColor) + "'" +
                 "}," +
-                "staus:'" + this.WindowState.ToString() + "'" +
+                "staus:'" + this.WindowState.ToString() + "', " +
+                "source:'" + _source + "'" +
             "})");
         }
 
@@ -443,6 +450,8 @@ namespace WebAppMX
             else
                 return Task.FromResult("true");
         }
+
+
     }
 }
 

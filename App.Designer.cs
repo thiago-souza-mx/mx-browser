@@ -181,6 +181,9 @@
             this.ContainerTitle.Padding = new System.Windows.Forms.Padding(15, 6, 6, 6);
             this.ContainerTitle.Size = new System.Drawing.Size(250, 44);
             this.ContainerTitle.TabIndex = 5;
+            this.ContainerTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ToolBar_MouseDown);
+            this.ContainerTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ToolBar_MouseMove);
+            this.ContainerTitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ToolBar_MouseUp);
             // 
             // AppTitle
             // 

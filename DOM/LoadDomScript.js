@@ -73,6 +73,7 @@ const MX_BROWSER = {
         setStyleBoot(theme); 
     },
     onClose: ()=> true,
+    onReload: ()=> true,
     onMinimize() {
         window.dispatchEvent(new Event('onMinimize'));
     },
@@ -93,6 +94,9 @@ const MX_BROWSER = {
     },
     close() {
         MX_BROWSER.dispatchAction('close');
+    },
+    reload() {
+        MX_BROWSER.dispatchAction('reload');
     },
     minimize() {
         MX_BROWSER.dispatchAction('minimize');
