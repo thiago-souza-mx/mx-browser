@@ -28,10 +28,10 @@ namespace WebAppMX
         public float _splashTime = 0;
         public string _splashText = "";
         public bool _splashOpen = false;
-
+        public bool _appOpen = false;
         public bool _loadBar = false;
         public bool _log = false;
-        public Color _toolBarColor;
+        public Color _appColor;
         public Color _toolBarFontColor;
         public Image _splashIcon;
         public Icon _taskbarIcon;
@@ -100,8 +100,8 @@ namespace WebAppMX
                 if( _log ) CGI.LogInfo("Servidor não inicado:" + e.Message);
             }
 
-            try { _toolBarColor = ColorTranslator
-                                    .FromHtml(WINDOW["ToolBarColor"]);  } catch { _toolBarColor = this.BackColor; }
+            try { _appColor = ColorTranslator
+                                    .FromHtml(WINDOW["AppColor"]);  } catch { _appColor = this.BackColor; }
             try { _splashIcon   = Image.FromFile(SPLASH["Icon"]);       } catch { _splashIcon = App.ToolBarLogo.Image; }
             try { _splashTime   = (float.Parse(SPLASH["Timer"]) * 1000);  } catch { _splashTime = (5 * 1000) ; }
             try { _loadBar      = bool.Parse(SPLASH["LoadBar"]);        } catch { }
@@ -111,7 +111,7 @@ namespace WebAppMX
             try { _log          = bool.Parse(SISTEM["Log"]);            } catch { }
 
 
-            CenterLogo.BackColor = _toolBarColor;
+            CenterLogo.BackColor = _appColor;
             CenterLogo.Image = _splashIcon;
 
             LoadBar.Visible = _loadBar;
@@ -130,7 +130,7 @@ namespace WebAppMX
             // Atribuitions App
             Bitmap icon = (Bitmap)CGI.SquareImage(_splashIcon);
             _taskbarIcon = Icon.FromHandle((icon).GetHicon());
-            this.BackColor = _toolBarColor;
+            this.BackColor = _appColor;
             this.Icon = _taskbarIcon;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(App.App_Closing);
 
@@ -173,20 +173,23 @@ namespace WebAppMX
                 {
                     Task.Delay(1000).Wait();
                     TimerLoad.Stop();
-                    //AppOpen();
+                    if(!_appOpen)
+                        AppOpen();
                 }
             }
             else
             {
                 TimerLoad.Stop();
-                //AppOpen();
+                if (!_appOpen)
+                    AppOpen();
             }
         }
 
         public void AppOpen()
         {
+            _appOpen = true;
             if (_splashOpen)
-            {
+            {                
                 if (_loadBar)
                 {
                     LoadColor.Width = 320;
@@ -203,7 +206,6 @@ namespace WebAppMX
             else { 
                 this.Hide();
             }
-
             App.Opacity = 0;
             App.Show();
             while (App.Opacity < 1)
@@ -212,6 +214,7 @@ namespace WebAppMX
                 App.Opacity += 0.1;
             }
             App.Opacity = 1;
+            
         }
     }
 }

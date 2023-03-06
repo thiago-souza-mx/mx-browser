@@ -42,7 +42,7 @@ namespace WebAppMX
         public bool _log = false;
         public bool _ctxMenu = false;
         public bool _startApi = false;
-        public Color _toolBarColor;
+        public Color _appColor;
         public Color _toolBarFontColor;
         public int _height;
         public int _width;
@@ -89,10 +89,9 @@ namespace WebAppMX
             try { _width = int.Parse(WINDOW["Width"]); } catch { _width = this.Width; }
             try
             {
-                _toolBarColor = ColorTranslator
-                                      .FromHtml(WINDOW["ToolBarColor"]);
+                _appColor = ColorTranslator.FromHtml(WINDOW["AppColor"]);
             }
-            catch { _toolBarColor = this.BackColor; }
+            catch { _appColor = this.BackColor; }
             try { _fullSceen = int.Parse(WINDOW["FullScreen"]); } catch { }
             try { _source = new Uri(WINDOW["Source"]); } catch { _source = Browser.Source; }
             try { _windowIcon = Image.FromFile(WINDOW["Icon"]); } catch { _windowIcon = ToolBarLogo.Image; }
@@ -111,22 +110,22 @@ namespace WebAppMX
 
             // Atribuitions components
 
-            MaxiButton.FlatAppearance.MouseOverBackColor = Theme(_toolBarColor, 0.3f);
-            MinusButton.FlatAppearance.MouseOverBackColor = Theme(_toolBarColor, 0.3f);
-            CloseButton.FlatAppearance.MouseOverBackColor = Theme(_toolBarColor, 0.3f);
+            MaxiButton.FlatAppearance.MouseOverBackColor = Theme(_appColor, 0.3f);
+            MinusButton.FlatAppearance.MouseOverBackColor = Theme(_appColor, 0.3f);
+            CloseButton.FlatAppearance.MouseOverBackColor = Theme(_appColor, 0.3f);
 
-            MaxiButton.BackgroundColor = _toolBarColor;
-            MinusButton.BackgroundColor = _toolBarColor;
-            CloseButton.BackgroundColor = _toolBarColor;
+            MaxiButton.BackgroundColor = _appColor;
+            MinusButton.BackgroundColor = _appColor;
+            CloseButton.BackgroundColor = _appColor;
 
             MaxiButton.IconColor = Theme(_toolBarFontColor, 1, 0.55f);
             MinusButton.IconColor = Theme(_toolBarFontColor, 1, 0.55f);
             CloseButton.IconColor = Theme(_toolBarFontColor, 1, 0.55f);
 
             Browser.Source = _source;
-            Browser.BackColor = _toolBarColor;
-            Browser.DefaultBackgroundColor = _toolBarColor;
-            ToolBar.BackColor = _toolBarColor;
+            Browser.BackColor = _appColor;
+            Browser.DefaultBackgroundColor = _appColor;
+            ToolBar.BackColor = _appColor;
             AppTitle.Text = _appTitle;
             ToolBarLogo.Image = _windowIcon;
             ToolBarLogo.Size = new Size(_windowIcon.Width * ToolBarLogo.MaximumSize.Height / _windowIcon.Height, ToolBarLogo.MaximumSize.Height);
@@ -138,14 +137,14 @@ namespace WebAppMX
             this.Height = _height;
             this.Width = _width;
             this.Icon = _taskbarIcon;
-            this.BackColor = _toolBarColor;
+            this.BackColor = _appColor;
             if (_radius > 0)
                 this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, _radius, _radius));
 
             _local_path = Path.GetDirectoryName(Application.ExecutablePath);
 
             ChangeStyleComponent();
-            string script = $@"{_local_path}\LoadDomScript.js";
+            string script = $@"{_local_path}\DOM\LoadDomScript.js";
             Browser.InitializeAsync(script);
         }
 
@@ -294,7 +293,8 @@ namespace WebAppMX
             {
                 await cgi.Maximize(!fullActive);
                 await Api("MX_BROWSER.onNormalize();");
-                this.WindowState = FormWindowState.Normal;
+
+                this.WindowState = fullActive ? FormWindowState.Maximized : FormWindowState.Normal;
                 this.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, _radius, _radius));
             }
             else if (this.WindowState == FormWindowState.Normal)
@@ -410,7 +410,7 @@ namespace WebAppMX
         {
             Color theme;
 
-            if (_toolBarColor.GetBrightness() >= param)
+            if (_appColor.GetBrightness() >= param)
                 theme = ControlPaint.Dark(color, -perc);
             else
                 theme = ControlPaint.Light(color, perc);
@@ -422,7 +422,7 @@ namespace WebAppMX
             if (!e.IsSuccess)
             {
                 _startApi = true;
-                String page_error = $"file:///{_local_path}/erro.html";
+                String page_error = $"file:///{_local_path}/public/error.html";
                 Browser.CoreWebView2.Navigate(page_error);
             }
             else
@@ -431,7 +431,7 @@ namespace WebAppMX
                    splashForm.AppOpen();
                 _startApi = true;
             }
-            Api("MX_BROWSER.getTheme({primary:'" + CGI.ToHexString(_toolBarColor) + "', secondary:'" + CGI.ToHexString(_toolBarFontColor) + "'})");
+            Api("MX_BROWSER.getTheme({primary:'" + CGI.ToHexString(_appColor) + "', secondary:'" + CGI.ToHexString(_toolBarFontColor) + "'})");
         }
 
         private Task<string> Api(string method)
