@@ -23,12 +23,14 @@ namespace WebAppMX
         public KeyDataCollection WINDOW;
         public KeyDataCollection SERVER;
         public KeyDataCollection SPLASH;
-        public int _timerLoad = 0;
-        public int _splashTime = 0;
-        public string _splashText;
+        public KeyDataCollection SISTEM;
+        public float _timerLoad = 0;
+        public float _splashTime = 0;
+        public string _splashText = "";
         public bool _splashOpen = false;
 
         public bool _loadBar = false;
+        public bool _log = false;
         public Color _toolBarColor;
         public Color _toolBarFontColor;
         public Image _splashIcon;
@@ -50,13 +52,15 @@ namespace WebAppMX
         {
             App = new App(ini, this);
             InitializeComponent();
-            
+            App.pid_server = 0;
+
             // Initial definitions
 
             app = ini;
             WINDOW = app["WINDOW"];
             SERVER = app["SERVER"];
             SPLASH = app["SPLASH"];
+            SISTEM = app["SISTEM"];
 
             // Exceptions
 
@@ -72,7 +76,7 @@ namespace WebAppMX
 
                     string output = p.StandardOutput.ReadToEnd();
                     dynamic json = JsonConvert.DeserializeObject(output);
-                    CGI.LogInfo($"Servidor {SERVER["Name"]} Startado em : {SERVER["Start"]}");
+                    if( _log ) CGI.LogInfo($"Servidor {SERVER["Name"]} Startado em : {SERVER["Start"]}");
 
                     try
                     {
@@ -88,33 +92,40 @@ namespace WebAppMX
                         App.pid_server = json.Id;
                     }
 
-                    CGI.LogInfo($"PID do servidor {SERVER["Name"]}: {App.pid_server}");
+                    if( _log ) CGI.LogInfo($"PID do servidor {SERVER["Name"]}: {App.pid_server}");
                 }
             }
             catch (Exception e)
             {
-                CGI.LogInfo("Servidor não inicado:" + e.Message);
+                if( _log ) CGI.LogInfo("Servidor não inicado:" + e.Message);
             }
 
             try { _toolBarColor = ColorTranslator
                                     .FromHtml(WINDOW["ToolBarColor"]);  } catch { _toolBarColor = this.BackColor; }
             try { _splashIcon   = Image.FromFile(SPLASH["Icon"]);       } catch { _splashIcon = App.ToolBarLogo.Image; }
-            try { _splashTime   = (int.Parse(SPLASH["Timer"])
-                                       * 1000) / TimerLoad.Interval;    } catch { _splashTime = 5; }
+            try { _splashTime   = (float.Parse(SPLASH["Timer"]) * 1000);  } catch { _splashTime = (5 * 1000) ; }
             try { _loadBar      = bool.Parse(SPLASH["LoadBar"]);        } catch { }
             try { _splashText   = SPLASH["Text"];                       } catch { }
             try { _splashOpen   = bool.Parse(SPLASH["Open"]);           } catch { }
             try { _radius       = int.Parse(SPLASH["Radius"]);          } catch { }
+            try { _log          = bool.Parse(SISTEM["Log"]);            } catch { }
 
 
             CenterLogo.BackColor = _toolBarColor;
             CenterLogo.Image = _splashIcon;
 
             LoadBar.Visible = _loadBar;
-           // LoadBar.BackColor = App.Theme(LoadBar.BackColor, 1, 0.55f);
+
             LoadColor.BackColor = App.Theme(LoadColor.BackColor, 1, 0.55f);
             SplahText.Text = _splashText;
             SplahText.ForeColor = App.Theme(SplahText.ForeColor, 1, 0.55f);
+            if (_splashText.Length > 30)
+                SplahText.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            if (_splashText.Length > 40)
+                SplahText.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);            
+            if (_splashText.Length > 50)
+                SplahText.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+
 
             // Atribuitions App
             Bitmap icon = (Bitmap)CGI.SquareImage(_splashIcon);
@@ -128,7 +139,7 @@ namespace WebAppMX
 
             TimerLoad.Start();      
 
-        }       
+        }
 
 
         private const int CS_DROPSHADOW = 0x00020000;
@@ -150,33 +161,38 @@ namespace WebAppMX
             if (_splashOpen)
             {
                 this.Opacity = 1;
-                _timerLoad += 1;
+                _timerLoad += TimerLoad.Interval;
                 if (_loadBar)
                 {
-                    int c = (int)Math.Round(0.75 * _timerLoad);
-                    LoadColor.Width = (int)Math.Round((2.4 * _timerLoad));
-                    CounterLoad.Text = (c<=100 ? c : 100).ToString() + "%";
+                    float c = ((100 / _splashTime ) * _timerLoad);
+                    LoadColor.Width = (int)((LoadBar.Width / _splashTime) * _timerLoad);
+                    CounterLoad.Text = (c<=100 ? (int)c : 100).ToString() + "%";
                 }
 
-                if (_timerLoad == _splashTime)
+                if (_timerLoad >= _splashTime)
                 {
                     Task.Delay(1000).Wait();
                     TimerLoad.Stop();
-                    AppOpen();
+                    //AppOpen();
                 }
             }
             else
             {
                 TimerLoad.Stop();
-                AppOpen();
+                //AppOpen();
             }
         }
 
-        private void AppOpen()
+        public void AppOpen()
         {
             if (_splashOpen)
             {
-                while (this.Opacity > 0)
+                if (_loadBar)
+                {
+                    LoadColor.Width = 320;
+                    CounterLoad.Text = "100%";
+                }
+                    while (this.Opacity > 0)
                 {
                     Task.Delay(1).Wait();
                     this.Opacity -= 0.1;

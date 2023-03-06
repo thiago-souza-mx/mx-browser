@@ -1,5 +1,6 @@
 using IniParser;
 using IniParser.Model;
+using System.Text;
 
 namespace WebAppMX
 {
@@ -13,7 +14,7 @@ namespace WebAppMX
         {
 
             var parser = new FileIniDataParser();
-            IniData ini = parser.ReadFile("app.ini");
+            IniData ini = parser.ReadFile("app.ini", Encoding.UTF8);
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.

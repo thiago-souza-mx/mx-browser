@@ -64,10 +64,11 @@
             this.CounterLoad.AutoSize = true;
             this.CounterLoad.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CounterLoad.ForeColor = System.Drawing.Color.White;
-            this.CounterLoad.Location = new System.Drawing.Point(622, 472);
+            this.CounterLoad.Location = new System.Drawing.Point(597, 472);
             this.CounterLoad.Name = "CounterLoad";
-            this.CounterLoad.Size = new System.Drawing.Size(0, 19);
+            this.CounterLoad.Size = new System.Drawing.Size(45, 19);
             this.CounterLoad.TabIndex = 7;
+            this.CounterLoad.Text = "100%";
             // 
             // CenterLogo
             // 
@@ -84,22 +85,22 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.SplahText);
-            this.panel3.Location = new System.Drawing.Point(345, 410);
+            this.panel3.Location = new System.Drawing.Point(205, 388);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(221, 45);
+            this.panel3.Size = new System.Drawing.Size(500, 86);
             this.panel3.TabIndex = 6;
             // 
             // SplahText
             // 
-            this.SplahText.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SplahText.AutoSize = true;
+            this.SplahText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SplahText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SplahText.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SplahText.ForeColor = System.Drawing.Color.White;
-            this.SplahText.Location = new System.Drawing.Point(18, 4);
+            this.SplahText.Location = new System.Drawing.Point(0, 0);
             this.SplahText.Name = "SplahText";
-            this.SplahText.Size = new System.Drawing.Size(184, 37);
+            this.SplahText.Size = new System.Drawing.Size(500, 86);
             this.SplahText.TabIndex = 6;
-            this.SplahText.Text = "MX Corporate";
+            this.SplahText.Text = "MX Corporat";
             this.SplahText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LoadBar
@@ -107,7 +108,7 @@
             this.LoadBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.LoadBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.LoadBar.Controls.Add(this.LoadColor);
-            this.LoadBar.Location = new System.Drawing.Point(296, 480);
+            this.LoadBar.Location = new System.Drawing.Point(271, 480);
             this.LoadBar.Name = "LoadBar";
             this.LoadBar.Size = new System.Drawing.Size(320, 5);
             this.LoadBar.TabIndex = 0;
@@ -148,7 +149,6 @@
             this.Wrapper.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CenterLogo)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.LoadBar.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -10,15 +10,22 @@ namespace WebAppMX.Custom
 {
     public class Browser : WebView2
     {
+        public bool loaded = false;
         public Browser() {
 
-
+           
         }
 
-        public async void InitializeAsync()        {
-            await this.EnsureCoreWebView2Async(null);            
-            this.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
-            this.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+        public async Task InitializeAsync( string path ) {
+            string script = await File.ReadAllTextAsync(path);
+            await this.EnsureCoreWebView2Async(null);
+            await this.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(script);
+            this.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;            
+            this.CoreWebView2.Settings.IsBuiltInErrorPageEnabled = false;
+            this.CoreWebView2.Settings.IsStatusBarEnabled = false;
+            loaded = true;
+
+            //this.CoreWebView2.Navigate(navigate);
         }
 
     }
